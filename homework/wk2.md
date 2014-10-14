@@ -11,16 +11,17 @@ console.log(firstNumber);
 var secondNumber = 10;
 console.log(secondNumber);
 
-var sentence = "Omelete Du Fromage";
-console.log(sentence);
+var firstSentence = "Omelete Du Fromage.";
+console.log(firstsentence);
 
 var addFirstandSecond = firstNumber + secondNumber;
-console.log(addfirstandsecond);
+console.log(addfirstandsecond); = firstNumber + secondNumber;
 
-var addNumberandSentence = firstNumber + sentence;
+var addNumberandSentence = firstNumber + firstSentence;
 console.log(addNumberandSentence);
 
-console.log("sentence" - secondNumber);
+console.log("firstsentence" - secondNumber);
+console.log(secondNumber - firstNumber);
 
 var classesArray = ["Design for Touch", "Javascript", "Lab: Performance", "Service Concepts", "Human Servicest"];
 console.log(classesArray);
