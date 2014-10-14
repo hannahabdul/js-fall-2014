@@ -23,7 +23,7 @@ console.log(addNumberandSentence);
 console.log("firstsentence" - secondNumber);
 console.log(secondNumber - firstNumber);
 
-var classesArray = ["Design for Touch", "Javascript", "Lab: Performance", "Service Concepts", "Human Servicest"];
+var classesArray = ["Design for Touch", "Javascript", "Lab: Performance", "Service Concepts", "Human Services"];
 console.log(classesArray);
 
 var classes = {
