@@ -1,31 +1,31 @@
 <!DOCTYPE html>
-<html lang = "en">
-<head>
-	<meta charset="utf-8" />
-	<title>Homework: Week 2</title>
-</head>
+<html>
+    <head>
+      <meta charset="utf-8">
+      <title>Homework Week 2</title>
+    </head>
 <body>
 	<script>
 		var firstNumber = 5;
-		console.log(firstNumber);
+		//console.log(firstNumber);
 
-		var secondNumber = 10;
-		console.log(secondNumber);
+		var secondNumber = 10;		
+		//console.log(secondNumber);
 
-		var firstSentence = "Omelete Du Fromage.";
-		console.log(firstsentence);
+		var firstSentence = "Omelete Du Fromage.";		
+		//console.log(firstsentence);
 
-		var addFirstandSecond = firstNumber + secondNumber;
-		console.log(addfirstandsecond); = firstNumber + secondNumber;
+		var addFirstandSecond = firstNumber + secondNumber;		
+		//console.log(addfirstandsecond); = firstNumber + secondNumber;
 
-		var addNumberandSentence = firstNumber + firstSentence;
-		console.log(addNumberandSentence);
+		var addNumberandSentence = firstNumber + firstSentence;		
+		//console.log(addNumberandSentence);
 
-		console.log(secondNumber - firstsentence);
-		console.log(firstsentencelessfirstNumber);
+		//console.log(secondNumber - firstsentence);
+		//console.log(firstsentencelessfirstNumber);
 
-		var classesArray = ["Design for Touch", "Javascript", "Lab: Performance", "Service Concepts", "Human Services"];
-		console.log(classesArray);
+		var classesArray = ["Design for Touch", "Javascript", "Lab: Performance", "Service Concepts", "Human Services"];		
+		//console.log(classesArray);
 
 		var classes = {
 		"Design for Touch": "Luke Miller",
@@ -34,17 +34,19 @@
 		"Human Services": "Shana Agid",
 		"Service Concepts": "Lara Penin"
 		};
-		console.log(classes);
+		//console.log(classes);
 
 		var print = function(first, second0 {
 		console.log(first, second);
 		};
-
+		
+		//print("5","10");
+		
 		var swap = function(first, second) {
 		console.log(second, first);
 		};
 
-		swap("this","work");
+		//swap("10","5");
 
 	</script>
 </body>
