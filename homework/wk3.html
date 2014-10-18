@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <meta charset="utf-8">
+      <title>Homework Week 3</title>
+      <style>
+
+          #rect {
+              position: relative;
+              top: 50px;
+              left: 50px;
+              width: 100px;
+              height: 100px;
+              background: #f8f8f8;
+              -webkit-transition: left .5s;
+          }
+
+          .bordered {
+              border: 2px solid #A070A2;
+          }
+
+          #rect.lefty {
+              left: 200px;
+          }
+
+      </style>
+    </head>
+    <body>
+
+        <div id="rect"></div>
+
+        <script>
+            
+            var getRect = document.getElementById('rect');
+            getRect.classList.add('bordered');
+            
+            var leftyClickHandler = function(e) {
+
+				if (e.currentTarget.classList.contains('lefty')) {
+					e.currentTarget.classList.remove('lefty');
+				} 
+				else {
+					e.currentTarget.classList.add('lefty');
+				}
+
+			};
+
+			getRect.addEventListener('click', rightClickHandler);
+
+        </script>
+
+    </body>
+</html>
