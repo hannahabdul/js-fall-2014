@@ -2,7 +2,7 @@
 <html>
     <head>
       <meta charset="utf-8">
-      <title>Homework</title>
+      <title>Homework Week 3</title>
       <style>
 
           #rect {
@@ -11,18 +11,16 @@
               left: 50px;
               width: 100px;
               height: 100px;
-              background: #fee;
+              background: #f8f8f8;
               -webkit-transition: left .5s;
-              -webkit-transition: height .5s;
           }
 
           .bordered {
-              border: 2px solid #dcc;
+              border: 2px solid #A070A2;
           }
 
           #rect.lefty {
               left: 200px;
-              height: 10px;
           }
 
       </style>
@@ -32,47 +30,24 @@
         <div id="rect"></div>
 
         <script>
+            
+            var getRect = document.getElementById('rect');
+            getRect.classList.add('bordered');
+            
+            var leftyClickHandler = function(e) {
 
-                console.log(this);
+				if (e.currentTarget.classList.contains('lefty')) {
+					e.currentTarget.classList.remove('lefty');
+				} 
+				else {
+					e.currentTarget.classList.add('lefty');
+				}
 
-                var fn = function() {
-                    console.log(this);
-                }
+			};
 
-                var person = {
-                    name: "Justin",
-                    sayName: function() {
-                        console.log(this.name);
-                    }
-                }
-
-                var sayName = function() {
-                    console.log(this.name);
-                }
-
-                fn();
-                person.sayName();
-                sayName();
+			getRect.addEventListener('click', rightClickHandler);
 
         </script>
 
     </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
