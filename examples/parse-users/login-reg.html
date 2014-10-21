@@ -1,0 +1,39 @@
+<script src="jquery-2.1.1.min.js"></script>
+<script src="parse-1.3.0.min.js"></script>
+
+<form id="login">
+    <input type="text" name="username" />
+    <input type="password" name="password" />
+    <input type="submit" value="Log In" />
+</form>
+
+<p>Not a user?  <a href="register.html">Register</a></p>
+
+<script>
+
+    Parse.initialize("anBpWcFi4tt8WN5nIFJ2T2eaRLp9rCGhxOWZohtQ", "0bKnqYCRZhCr0OorUipeh5KoFbvvWm5zpYzOkVW8");
+
+    var registerForm = $('#login');
+
+    registerForm.on('submit', function(e) {
+
+        e.preventDefault();
+
+        var username = registerForm.find('[name="username"]').val();
+        var password = registerForm.find('[name="password"]').val();
+
+        Parse.User.logIn(username, password, {
+
+            success: function() {
+                console.log('Logged In!', arguments);
+            },
+
+            error: function() {
+                console.error('Try Again', arguments);
+            }
+
+        })
+
+    });
+    
+</script>

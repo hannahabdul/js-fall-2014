@@ -1,0 +1,58 @@
+<body>
+    <style>
+        .active {
+            border: green 1px solid;
+        }
+    </style>
+
+    <form id="new-person-form">
+        <label>First Name</label>
+        <input class="first-name" type="text" />
+        <label>Last Name</label>
+        <input class="last-name" type="text" />
+        <label>Job Title</label>
+        <input class="job-title" type="text" />
+        <label>Is Active?</label>
+        <input class="active" type="checkbox" />
+        <input type="submit" />
+    </form>
+
+    <ul id="employees"></ul>
+
+    <script src="jquery.js"></script>
+    <script src="mustache.js" ></script>
+
+    <script id="employee-template" type="text/template">
+        <div class="{{#active}}active{{/active}}">
+            <strong>Employee</strong>
+            <div class="name"><span class="first-name">{{first_name}}<span> <span class="last-name">{{last_name}}</span></div>
+            <div class="job-information">Title: {{job_title}}</div>
+        </div>
+    </script>
+
+    <script>
+
+        var employeeTemplate = $('#employee-template').html();
+
+        var addNewEmployee = function(e) {
+            e.preventDefault();
+
+            var employee = {
+                active: $('.active').prop('checked'),
+                first_name: $('.first-name').val(),
+                last_name: $('.last-name').val(),
+                job_title: $('.job-title').val(),
+            };
+
+            var newEmployeeHtmlString = Mustache.render(employeeTemplate, employee);
+            var newEmployeeHtml = $(newEmployeeHtmlString);
+
+            $('#employees').append(newEmployeeHtml);
+
+        }
+
+        $('#new-person-form').on('submit', addNewEmployee);
+
+    </script>
+
+</body>

@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-  <title>Javascript</title>
+  <title>Javascript Basics</title>
   <style type="text/css">
     body {
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -411,49 +411,113 @@ h1 {
   </div>
 
   <div class="slide" id="slide-1">
-    <section class="slide-content"><h1 id="why-">Why?</h1>
+    <section class="slide-content"><h1 id="jquery">jQuery</h1>
+<p>A toolkit for JS in the browser.</p>
+<p><a href="http://jquery.com/">http://jquery.com/</a></p>
 </section>
   </div>
   <div class="slide hidden" id="slide-2">
-    <section class="slide-content"><h1 id="syllabus">Syllabus</h1>
-<ul>
-<li>Weekly Exercises</li>
-<li>Live Coding</li>
-<li>Two Projects</li>
-</ul>
+    <section class="slide-content"><pre><code class="lang-javascript">
+&lt;script src=<span class="string">"https://code.jquery.com/jquery-2.1.1.min.js"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="title">script</span>&gt;</span>
+<span class="tag">&lt;<span class="title">script</span>&gt;</span><span class="javascript">
+
+    console.log(jQuery);
+
+</span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span></code></pre>
 </section>
   </div>
   <div class="slide hidden" id="slide-3">
-    <section class="slide-content"><h1 id="submitting-work-github-">Submitting Work: Github.</h1>
-<p>The class runs on github.</p>
+    <section class="slide-content"><p>Provides a javascript object named <strong>$</strong> with lots of functionality.</p>
+<p>There&#39;s nothing special about &quot;<strong>$</strong>&quot;. It&#39;s just a variable name.</p>
+<pre><code class="lang-javascript">
+&lt;script src=<span class="string">"https://code.jquery.com/jquery-2.1.1.min.js"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="title">script</span>&gt;</span>
+<span class="tag">&lt;<span class="title">script</span>&gt;</span><span class="javascript">
+    <span class="comment">// Your code here.</span>
+</span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span></code></pre>
 </section>
   </div>
   <div class="slide hidden" id="slide-4">
-    <section class="slide-content"><h1 id="schedule-and-subject-matter-">Schedule and subject matter.</h1>
+    <section class="slide-content"><p>Most often jQuery is treated as a function. It does different things depending on what you do with it.</p>
+<pre><code class="lang-javascript">    <span class="comment">// Pass it some HTML</span>
+
+    <span class="keyword">var</span> para = $(<span class="string">"&lt;p class='small'&gt;Something&lt;/p&gt;"</span>);
+
+    <span class="comment">// Equivalent to:</span>
+
+    <span class="keyword">var</span> para = document.createElement(<span class="string">'p'</span>);
+    <span class="keyword">var</span> text = document.createTextNode(<span class="string">'Something'</span>);
+    para.appendChild(text);
+    para.setAttribute(<span class="string">'class'</span>, <span class="string">'small'</span>);</code></pre>
 </section>
   </div>
   <div class="slide hidden" id="slide-5">
-    <section class="slide-content"><h1 id="-del-i-m-not-a-programmer-del-"><del>&quot;I&#39;m not a programmer&quot;</del></h1>
+    <section class="slide-content"><pre><code class="lang-javascript">    <span class="comment">// Pass it a css selector</span>
+
+    <span class="keyword">var</span> orange = $(<span class="string">".orange"</span>);
+
+    <span class="comment">// Equivalent to:</span>
+
+    vara orange = document.querySelectorAll(<span class="string">'.orange'</span>);
+
+    <span class="comment">// Or try </span>
+
+    $(<span class="string">'p'</span>); <span class="comment">// get all p tags</span>
+    $(<span class="string">'#header'</span>) <span class="comment">// get by id</span>
+    $(<span class="string">'#header .orange'</span>) <span class="comment">// all things with orange class inside the header</span></code></pre>
 </section>
   </div>
-  <div class="slide hidden  " id="slide-6">
-    <section class="slide-content"><h1 id="-del-why-do-we-need-to-know-this-del-"><del>&quot;Why Do We Need to Know This?&quot;</del></h1>
+  <div class="slide hidden" id="slide-6">
+    <section class="slide-content"><p>jQuery returns a jquery object.</p>
+<p>Its a little like an array, and a little like a DOM node.</p>
+<pre><code class="lang-javascript">
+<span class="keyword">var</span> lists = $(<span class="string">'ul'</span>); <span class="comment">// Get all the ULs on a page.</span>
+
+lists.css({backgroundColor: red}); <span class="comment">// Turn them all red</span>
+
+lists.append($(<span class="string">'&lt;li&gt;jQuery is easy.&lt;/li&gt;'</span>)); <span class="comment">// Append a new item to each of them</span>
+
+lists.addClass(<span class="string">'orange'</span>); <span class="comment">// Now they all have a new class</span>
+
+lists.empty(); <span class="comment">// Now they're all empty</span></code></pre>
 </section>
   </div>
   <div class="slide hidden" id="slide-7">
-    <section class="slide-content"><h1 id="you-have-to-type">You Have To Type</h1>
+    <section class="slide-content"><p>Events</p>
+<pre><code class="lang-javascript"><span class="keyword">var</span> btn = $(<span class="string">'button'</span>);
+btn.addEventListener(<span class="string">'click'</span>, <span class="keyword">function</span>() {
+    <span class="keyword">this</span>.toggleClass(<span class="string">'on'</span>);
+});</code></pre>
 </section>
   </div>
   <div class="slide hidden" id="slide-8">
-    <section class="slide-content"><h1 id="think-small">Think Small</h1>
-</section>
+    <section class="slide-content"></section>
   </div>
   <div class="slide hidden" id="slide-9">
-    <section class="slide-content"><h1 id="-demo-http-miniatureape-github-io-facecontroller-"><a href="http://miniatureape.github.io/facecontroller/">demo</a></h1>
+    <section class="slide-content"><p>Fun effects.</p>
+<pre><code class="lang-javascript">
+<span class="keyword">var</span> lists = $(<span class="string">'ul'</span>); <span class="comment">// Get all the ULs on a page.</span>
+
+lists.fadeOut() <span class="comment">// Elements fade away.</span>
+lists.fadeIn() <span class="comment">// Elements fade back in.</span>
+lists.animate({backgroundColor: <span class="string">'#f00'</span>});
+
+lists.append($(<span class="string">'&lt;li&gt;jQuery is easy.&lt;/li&gt;'</span>)); <span class="comment">// Append a new item to each of them</span>
+
+lists.addClass(<span class="string">'orange'</span>); <span class="comment">// Now they all have a new class</span>
+
+lists.empty(); <span class="comment">// Now they're all empty</span></code></pre>
 </section>
   </div>
   <div class="slide hidden" id="slide-10">
-    <section class="slide-content"></section>
+    <section class="slide-content"><p>There&#39;s a lot more to jQuery. But you already have so much to explore.</p>
+<ul>
+<li><a href="http://api.jquery.com/">Complete Docs</a></li>
+<li><a href="http://api.jquery.com/category/manipulation/">DOM Manipulation</a></li>
+<li><a href="http://api.jquery.com/category/effects/">Effects</a></li>
+<li><a href="http://api.jquery.com/category/selectors/">Selectors</a></li>
+<li><a href="http://api.jquery.com/category/events/">Events</a></li>
+</ul>
+</section>
   </div>
   <div class="slide hidden" id="slide-11">
     <section class="slide-content"><div class="author">

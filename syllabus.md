@@ -68,13 +68,13 @@ __9/15__ - Javascript in the browser (Exercise 2 Due)
 
 __9/22__ - More Javascript Basics (Exercise 3 Due, Midterm Assigned)
 
-__9/29__ - Ajax and Remote Data (Exercise 4 Due, Midterm Description Due)
+__9/29__ - Persistence (Exercise 4 Due, Midterm Description Due)
 
 __10/6__ - Persistence (Exercise 5 Due)
 
-__10/13__ - Persistence (Exercise 6 Due)
- 
-__10/20__ - NodeJS 
+__10/13__ - Ajax and Remote Data (No Homework Due)
+
+__10/20__ - NodeJS  (Exercise 7 due. Midterm Check in!)
 
 __10/27__ - NodeJS 
 

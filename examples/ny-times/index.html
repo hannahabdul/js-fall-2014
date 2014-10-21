@@ -1,0 +1,56 @@
+<body>
+    <ul id="list"></ul>
+
+    <script id="event-tpl" type="text/template">
+        {{#movies}}
+        <div>
+            <h1>
+                <a href="{{event_detail_url}}">{{event_name}}</a>
+                {{#times_pick}}
+                <img src="http://www.clipartbest.com/cliparts/LcK/75X/LcK75Xpca.jpeg" width=50 height=50 />
+                {{/times_pick}}
+            </h1>
+            {{{web_description}}}
+        </div>
+        {{/movies}}
+    </script>
+
+    <script src="mustache.js"></script>
+    <script src="https://code.jquery.com/jquery-2.1.1.js"></script>
+    <script>
+
+    var eventTpl = $('#event-tpl').html();
+
+    var filterMovies = function(results) {
+        var movies = [];
+
+        for (var i = 0; i < results.length; i++) {
+            if (results[i].category == 'Movies') {
+                movies.push(results[i]);
+            }
+        }
+
+        return movies;
+    }
+
+    var renderMovies = function(results) {
+        var movies = filterMovies(results);
+        var movieHtml = Mustache.render(eventTpl, {movies: movies});
+        var movieDom = $(movieHtml);
+        $('#list').append(movieDom);
+    }
+
+    $.ajax({
+        url: 'http://api.nytimes.com/svc/events/v2/listings.jsonp',
+        data: {
+            'api-key': 'bfafa19d35ada614d3b65412bc33138d:7:69985333',
+            'date_range': '2014-10-13:2014-10-14'
+        },
+        dataType: 'jsonp',
+        success: function(response) {
+            renderMovies(response.results);
+        }
+    });
+    console.log('Script done');
+    </script>
+</body>

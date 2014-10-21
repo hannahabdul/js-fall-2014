@@ -4,7 +4,7 @@ author:
   twitter: justindo
   url: http://justindonato.com
 controls: false
-theme: jdan/cleaver-retro
+theme: miniatureape/cleaver-theme
 
 --
 
@@ -24,6 +24,8 @@ Syllabus
 
 Submitting Work: Github.
 ===
+
+The class runs on github.
 
 --
 

@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-  <title>Javascript</title>
+  <title>Mustache</title>
   <style type="text/css">
     body {
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -411,51 +411,70 @@ h1 {
   </div>
 
   <div class="slide" id="slide-1">
-    <section class="slide-content"><h1 id="why-">Why?</h1>
+    <section class="slide-content"><h1 id="mustache-templating">Mustache Templating</h1>
 </section>
   </div>
   <div class="slide hidden" id="slide-2">
-    <section class="slide-content"><h1 id="syllabus">Syllabus</h1>
-<ul>
-<li>Weekly Exercises</li>
-<li>Live Coding</li>
-<li>Two Projects</li>
-</ul>
+    <section class="slide-content"><p>Up to this point, we&#39;ve been changing DOM programatically:</p>
+<pre><code class="lang-javascript">    <span class="keyword">var</span> input = $(<span class="string">'#myInput'</span>);
+    input.text(firstName);</code></pre>
 </section>
   </div>
   <div class="slide hidden" id="slide-3">
-    <section class="slide-content"><h1 id="submitting-work-github-">Submitting Work: Github.</h1>
-<p>The class runs on github.</p>
+    <section class="slide-content"><p>And when we have to render new data, we&#39;ve been building it using jquery and dom nodes.</p>
+<pre><code class="lang-javascript">    <span class="keyword">var</span> list = $(<span class="string">'#myList'</span>);
+    <span class="keyword">var</span> newLi = $(<span class="string">'&lt;li&gt;'</span>);
+    <span class="keyword">var</span> closeButton = $(<span class="string">'&lt;span class="close"&gt;x&lt;/span&gt;'</span>);
+    newLi.text(<span class="string">"Some todo item"</span>);
+    newLi.append(closeButton);
+    ...
+    list.append(newLi);</code></pre>
 </section>
   </div>
-  <div class="slide hidden" id="slide-4">
-    <section class="slide-content"><h1 id="schedule-and-subject-matter-">Schedule and subject matter.</h1>
+  <div class="slide hidden  " id="slide-4">
+    <section class="slide-content"><p>It would be nice if we could just write HTML and replace the bits we care about with data. </p>
+<p>We can do this with a templating language.</p>
 </section>
   </div>
-  <div class="slide hidden" id="slide-5">
-    <section class="slide-content"><h1 id="-del-i-m-not-a-programmer-del-"><del>&quot;I&#39;m not a programmer&quot;</del></h1>
+  <div class="slide hidden  " id="slide-5">
+    <section class="slide-content"><p><a href="https://github.com/janl/mustache.js">Mustache</a> is one of the simplest templating languages.</p>
 </section>
   </div>
-  <div class="slide hidden  " id="slide-6">
-    <section class="slide-content"><h1 id="-del-why-do-we-need-to-know-this-del-"><del>&quot;Why Do We Need to Know This?&quot;</del></h1>
+  <div class="slide hidden -" id="slide-6">
+    <section class="slide-content"><pre><code class="lang-javascript">    <span class="comment">// Store your template in a string</span>
+    <span class="keyword">var</span> itemTemplate = <span class="string">"&lt;li&gt;{{ todoText }}&lt;span class='close'&gt;x&lt;/span&gt;&lt;/li&gt;"</span>;
+
+    <span class="comment">// render an html string by passing the function an object.</span>
+    <span class="keyword">var</span> itemHtml = Mustache.render(itemTemplate, {todoText: <span class="string">'Buy Beer and Diapers.'</span>});
+
+    <span class="comment">// Stick in DOM using jquery</span>
+    $(<span class="string">'#list'</span>).html(itemHtml);</code></pre>
 </section>
   </div>
-  <div class="slide hidden" id="slide-7">
-    <section class="slide-content"><h1 id="you-have-to-type">You Have To Type</h1>
+  <div class="slide hidden -" id="slide-7">
+    <section class="slide-content"><p>Rather than keep long html templates in your code, put them in your HTML and extract.</p>
+<pre><code class="lang-javascript">    <span class="comment">// Store your template in a string</span>
+    &lt;script id=<span class="string">'person-tpl'</span> &gt;
+        <span class="xml"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"person-card"</span>&gt;</span>
+            <span class="tag">&lt;<span class="title">img</span> <span class="attribute">class</span>=<span class="value">"avatar"</span> <span class="attribute">src</span>=<span class="value">"{{image_avatar}} /&gt;
+            &lt;span&gt;{{first_name}}&lt;/span&gt;
+            &lt;span&gt;{{last_name}}&lt;/span&gt;
+            &lt;div class="</span><span class="attribute">job-title</span>"&gt;</span>{{job_title}}<span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+        <span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+    <span class="tag">&lt;/<span class="title">script</span>&gt;</span>
+
+    var personTemplate = $('#person-tpl').html();</span></code></pre>
 </section>
   </div>
   <div class="slide hidden" id="slide-8">
-    <section class="slide-content"><h1 id="think-small">Think Small</h1>
+    <section class="slide-content"><p>Mustache lets you do rudimentary logic and loops.</p>
 </section>
   </div>
   <div class="slide hidden" id="slide-9">
-    <section class="slide-content"><h1 id="-demo-http-miniatureape-github-io-facecontroller-"><a href="http://miniatureape.github.io/facecontroller/">demo</a></h1>
+    <section class="slide-content"><p><a href="http://miniatureape.github.io/js-fall-2014/examples/mustache/index.html">Example</a></p>
 </section>
   </div>
   <div class="slide hidden" id="slide-10">
-    <section class="slide-content"></section>
-  </div>
-  <div class="slide hidden" id="slide-11">
     <section class="slide-content"><div class="author">
   <h1 class="name">Justin Donato</h1>
     <h3 class="twitter">

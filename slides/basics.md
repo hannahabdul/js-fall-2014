@@ -4,10 +4,14 @@ author:
   twitter: justindo
   url: http://justindonato.com
 controls: false
-theme: matmuchrapna/cleaver-ribbon
+theme: miniatureape/cleaver-theme
 --
 
 # Javascript Basics
+
+--
+
+What is Programming? What is Javascript?
 
 --
 
@@ -247,6 +251,8 @@ console.log(sentence);
 
 ```
 
+--
+
 # Functions
 
 You can wrap up several lines of code into reusable chunks called Functions. You can store them in variables. To use one, add () to the variable.
@@ -302,6 +308,7 @@ var squareOfNine = square(9);
 ```
 
 --
+
 # Functions
 
 Functions can access variables outside of their brackets. We'll get into exactly how this works later.

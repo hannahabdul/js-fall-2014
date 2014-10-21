@@ -1,0 +1,96 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+#app {
+    margin: 0 auto;
+    width: 100%;
+    max-width: 600px;
+}
+
+header {
+    padding: 10px 30px;
+}
+
+header h1 {
+    font-family: 'Yellowtail', cursive;
+    float: left;
+    margin: 0;
+    padding: 0;
+}
+
+.toggle-upload {
+    float: right;
+    font-weight: bold;
+}
+
+#upload {
+    clear: both;
+    display: none;
+    padding: 30px;
+}
+
+#upload div {
+    margin: 20px 0;
+}
+
+.display {
+    display: block !important; /* :) */
+}
+
+.caption-section {
+    display: none;
+    margin: 10px 0;
+}
+
+#photo {
+    display: none;
+}
+
+.btn {
+    padding: 10px;
+    border: 2px solid;
+    color: #3498db;
+    background-color: white;
+    border-radius: 3px;
+}
+
+.btn.wide {
+    display: block;
+    width: 100%;
+    text-align: center;
+}
+
+.upload-btn {}
+
+#caption {
+    width: 100%;
+    display: block;
+    padding: 5px;
+    border: 0;
+    border-bottom: 1px solid #3498db;
+    font-size: larger;
+    outline-width: 0;
+}
+
+ul {
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+}
+
+#list img {
+    width: 100%;
+    padding: 30px;
+    display: block;
+    margin: 0 auto;
+}
+
+#list p {
+    padding: 0 30px;
+}

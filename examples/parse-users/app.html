@@ -1,0 +1,57 @@
+<script src="jquery-2.1.1.min.js"></script> <script src="parse-1.3.0.min.js"></script> 
+<form id="caption-form">
+    <input type="file" id="photo" />
+    <input type="text" id="title" />
+    <input type="text" id="caption" />
+    <input type="submit" />
+<form>
+
+<ul id="results">
+</ul>
+
+<script>
+
+    Parse.initialize("anBpWcFi4tt8WN5nIFJ2T2eaRLp9rCGhxOWZohtQ", "0bKnqYCRZhCr0OorUipeh5KoFbvvWm5zpYzOkVW8");
+
+    var PhotoDescription = Parse.Object.extend("PhotoDescription");
+    var query = new Parse.Query(PhotoDescription);
+    query.equalTo('user', Parse.User.current());
+
+    query.find({
+
+        success: function(results) {
+
+            var resultsList = $('#results');
+            for (var i = 0; i < results.length; i++) {
+                var newResult = $("<li>").text( results[i].get('caption') );
+                resultsList.append(newResult);
+            }
+
+        },
+
+    });
+
+
+    var form = $('#caption-form');
+
+    form.on('submit', function(e) {
+
+        e.preventDefault();
+
+        var photoDescription = new PhotoDescription();
+
+        photoDescription.set('title', $('#title').val() );
+        photoDescription.set('caption', $('#caption').val() );
+        photoDescription.set('user', Parse.User.current());
+
+        photoDescription.save(null, {
+
+            success: function(description) {
+                console.log('saved data', description);
+            },
+
+        });
+
+    });
+
+</script>

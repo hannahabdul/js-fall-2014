@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-  <title>Javascript</title>
+  <title>Ajax</title>
   <style type="text/css">
     body {
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -411,51 +411,112 @@ h1 {
   </div>
 
   <div class="slide" id="slide-1">
-    <section class="slide-content"><h1 id="why-">Why?</h1>
+    <section class="slide-content"><h1 id="ajax">Ajax</h1>
 </section>
   </div>
   <div class="slide hidden" id="slide-2">
-    <section class="slide-content"><h1 id="syllabus">Syllabus</h1>
-<ul>
-<li>Weekly Exercises</li>
-<li>Live Coding</li>
-<li>Two Projects</li>
-</ul>
+    <section class="slide-content"><p>Asynchronus Javascript and XML</p>
 </section>
   </div>
   <div class="slide hidden" id="slide-3">
-    <section class="slide-content"><h1 id="submitting-work-github-">Submitting Work: Github.</h1>
-<p>The class runs on github.</p>
+    <section class="slide-content"><p>XML is a serialization format. Replaced by JSON.</p>
+<p>(See persistance slides for more info.)</p>
 </section>
   </div>
   <div class="slide hidden" id="slide-4">
-    <section class="slide-content"><h1 id="schedule-and-subject-matter-">Schedule and subject matter.</h1>
+    <section class="slide-content"><p>Allows JS programmer to fetch data that isn&#39;t on the current page or in the current script.</p>
+<p>It also allows a user to send data to a server, like submitting a form, but doesn&#39;t refresh the page.</p>
 </section>
   </div>
   <div class="slide hidden" id="slide-5">
-    <section class="slide-content"><h1 id="-del-i-m-not-a-programmer-del-"><del>&quot;I&#39;m not a programmer&quot;</del></h1>
+    <section class="slide-content"><p>It doesn&#39;t depend on jQuery, but jQuery makes it very easy.</p>
+<pre><code class="lang-javascript">
+    $.ajax({
+        url: <span class="string">'http://www.yourdomain.com/stuff'</span>, 
+        success: <span class="keyword">function</span>(results) {
+            console.log(<span class="string">'I got the results'</span>, results);
+        },
+        error: <span class="keyword">function</span>() {
+            console.error(<span class="string">'Something went wrong'</span>);
+        },
+    });</code></pre>
 </section>
   </div>
-  <div class="slide hidden  " id="slide-6">
-    <section class="slide-content"><h1 id="-del-why-do-we-need-to-know-this-del-"><del>&quot;Why Do We Need to Know This?&quot;</del></h1>
+  <div class="slide hidden" id="slide-6">
+    <section class="slide-content"><p>Asynchronous</p>
+<pre><code class="lang-javascript">
+    <span class="keyword">var</span> results;
+
+    $.ajax({
+        url: <span class="string">'http://www.yourdomain.com/stuff'</span>, 
+        success: <span class="keyword">function</span>(results) {
+            results = results;
+        }
+    });
+
+    <span class="keyword">var</span> title = results.title; <span class="comment">// ERROR! You don't have the results!</span></code></pre>
 </section>
   </div>
   <div class="slide hidden" id="slide-7">
-    <section class="slide-content"><h1 id="you-have-to-type">You Have To Type</h1>
+    <section class="slide-content"><p>3rd Party APIs (Application Programming Interface)</p>
+<p>A way of getting at data in a database you don&#39;t own.</p>
 </section>
   </div>
   <div class="slide hidden" id="slide-8">
-    <section class="slide-content"><h1 id="think-small">Think Small</h1>
+    <section class="slide-content"><p>NY Times API</p>
+<p><a href="http://developer.nytimes.com/docs"><a href="http://developer.nytimes.com/docs">http://developer.nytimes.com/docs</a></a></p>
+<p>Create an account so you have a <code>key</code></p>
 </section>
   </div>
   <div class="slide hidden" id="slide-9">
-    <section class="slide-content"><h1 id="-demo-http-miniatureape-github-io-facecontroller-"><a href="http://miniatureape.github.io/facecontroller/">demo</a></h1>
+    <section class="slide-content"><p>Unfortunately, Security Restrictions prevent this from working from a webpage</p>
+<pre><code class="lang-javascript">
+$.ajax({
+    url: <span class="string">'http://api.nytimes.com/svc/events/v2/listings.json'</span>,
+    data: {
+        <span class="string">'api-key'</span>: YOUR_KEY_HERE,
+        <span class="string">'date_range'</span>: <span class="string">'2014-10-13:2014-10-14'</span>
+    },
+    success: <span class="keyword">function</span>(response) {
+        <span class="comment">// This doesn't work! :(</span>
+    }
+});</code></pre>
 </section>
   </div>
   <div class="slide hidden" id="slide-10">
-    <section class="slide-content"></section>
+    <section class="slide-content"><p>Fortunately, there&#39;s a work around: JSONP</p>
+<pre><code class="lang-javascript">
+$.ajax({
+    url: <span class="string">'http://api.nytimes.com/svc/events/v2/listings.jsonp'</span>,
+    data: {
+        <span class="string">'api-key'</span>: YOUR_KEY_HERE,
+        <span class="string">'date_range'</span>: <span class="string">'2014-10-13:2014-10-14'</span>
+    },
+    dataType: <span class="string">'jsonp'</span>
+    success: <span class="keyword">function</span>(response) {
+        <span class="comment">//  Yippee :)</span>
+    }
+});</code></pre>
+</section>
   </div>
   <div class="slide hidden" id="slide-11">
+    <section class="slide-content"><p>JSONP</p>
+<p>We&#39;ve been loading scripts directly from 3rd party servers all class long (jQuery, etc).</p>
+<p>The <code>&lt;script&gt;</code> tag is not limited by same-domain restrictions.</p>
+<p>Scripts contain code, but also data. We want data.</p>
+<p>```</p>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-12">
+    <section class="slide-content"><p>JSONP</p>
+<p>When you make a JSONP request, under the hood jQuery is creating a <code>&lt;script&gt;</code> tag with the <code>src</code> set to the api address.</p>
+<p>It also tells the server to wrap the data in a function call. So this data:</p>
+<pre><code class="lang-javascript"> {results: [<span class="string">'Thing'</span>, <span class="string">'Something'</span>, <span class="string">'Another thing'</span>]}</code></pre>
+<p>Gets transformed to:</p>
+<pre><code class="lang-javascript"> success({results: [<span class="string">'Thing'</span>, <span class="string">'Something'</span>, <span class="string">'Another thing'</span>]});</code></pre>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-13">
     <section class="slide-content"><div class="author">
   <h1 class="name">Justin Donato</h1>
     <h3 class="twitter">

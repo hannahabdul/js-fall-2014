@@ -1,0 +1,26 @@
+<style>
+
+    img {
+        width: 80%;
+        display: block;
+        margin: 20px auto;
+    }
+
+</style>
+<h1>Keeping Forked Git Repos in Sync</h1>
+<p>As the class has progressed, I've been committing changes to my repo, and you've been committing changes to your repo. But you might want to pull over the files I've created into your own repo, for instance, as I add more homework files. You're welcome to do this manually by creating new files inside your repo and pasting in the contents of files from mine, but it's usually easier to merge the changes from my repo to yours.</p>
+<p>Normally, this is pretty easy, but it can get complicated if we've both changed the same file in ways that overlap. In that case, git doesn't know which is the "Right" version, mine or yours, and you have to manually tell it what to do. But there's a good chance you actually haven't done that, so here are directions to do this for this easy case.</p>
+<p>First, you'll see that my forked repo is one commit behind the original.</p>
+<img src="http://miniatureape.github.io/js-fall-2014/assets/images/commits-behind.png" />
+<p>Next you'll click the pull request button. Normally, a pull request is something you create when you have changes you want the owner of the original repo to add to theirs. But there's a way to flip that relationship around, so you'll be creating a pull request from the original (my repo) to yours.</p>
+<img src="http://miniatureape.github.io/js-fall-2014/assets/images/pull-request-button.png" />
+<p>To do this, click the text link that says "Try switching the base." This changes the base repo to be yours instead of mine.</p>
+<img src="http://miniatureape.github.io/js-fall-2014/assets/images/switching-the-base.png" />
+<p>You'll notice now your repo is on the left. Now you can click, "Create pull request."</p>
+<p>Ok, now you're either lucky, or you're going to have to do things the hard way: If this screen says "Able to Merge", you're good. If it doesn't you can give up now. You have to pull these changes in manually and fix merge conflicts.</p>
+<img src="http://miniatureape.github.io/js-fall-2014/assets/images/able-to-merge.png" />
+<p>If you are able to merge, you can hit the "create pull request" button now.</p>
+<img src="http://miniatureape.github.io/js-fall-2014/assets/images/able-to-merge.png" />
+<p>Lastly, you'll merge this pull request into your repo by clicking the merge button.</p>
+<img src="http://miniatureape.github.io/js-fall-2014/assets/images/merge.png" />
+<p>Now, on the terminal, you should be able to `git pull` and you'll get all the changes I've made. Repeat this step periodically to keep up to date.</p>

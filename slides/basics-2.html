@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-  <title>Javascript</title>
+  <title>Flow Control &#x2F; Functions</title>
   <style type="text/css">
     body {
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -411,51 +411,132 @@ h1 {
   </div>
 
   <div class="slide" id="slide-1">
-    <section class="slide-content"><h1 id="why-">Why?</h1>
+    <section class="slide-content"><h1 id="flow-control-and-functions">Flow Control and Functions</h1>
 </section>
   </div>
   <div class="slide hidden" id="slide-2">
-    <section class="slide-content"><h1 id="syllabus">Syllabus</h1>
-<ul>
-<li>Weekly Exercises</li>
-<li>Live Coding</li>
-<li>Two Projects</li>
-</ul>
+    <section class="slide-content"><h2 id="looping">Looping</h2>
+<p>For loops let you loop over arrays.</p>
+<pre><code class="lang-javascript">
+    <span class="keyword">var</span> arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];
+
+    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; arr.length; i++) {
+        console.log(arr[i]);
+    }</code></pre>
 </section>
   </div>
   <div class="slide hidden" id="slide-3">
-    <section class="slide-content"><h1 id="submitting-work-github-">Submitting Work: Github.</h1>
-<p>The class runs on github.</p>
+    <section class="slide-content"><p>And Objects</p>
+<pre><code class="lang-javascript">
+    <span class="keyword">var</span> person = {
+        name: <span class="string">'Justin'</span>,
+        age: <span class="number">35</span>,
+        profession: <span class="string">'Software Engineer'</span>
+    };
+
+    <span class="keyword">for</span> (<span class="keyword">var</span> key <span class="keyword">in</span> person) {
+        console.log(person[key]);
+    }</code></pre>
 </section>
   </div>
   <div class="slide hidden" id="slide-4">
-    <section class="slide-content"><h1 id="schedule-and-subject-matter-">Schedule and subject matter.</h1>
+    <section class="slide-content"><h2 id="branching">Branching</h2>
+<p>Use if and if...else statements to change program flow depending on truthyness of some condition.</p>
+<pre><code class="lang-javascript">
+    <span class="keyword">var</span> person = {
+        name: <span class="string">'Justin'</span>,
+        age: <span class="number">35</span>,
+        profession: <span class="string">'Software Engineer'</span>
+    };
+
+    <span class="keyword">if</span> (person.age &lt; <span class="number">65</span> &amp;&amp; person.age &gt; <span class="number">22</span>) {
+        console.log(<span class="string">'Work'</span>);
+    } <span class="keyword">else</span> <span class="keyword">if</span> (person.age &gt;= <span class="number">65</span>) {
+        console.log(<span class="string">'Play Golf'</span>);
+    } <span class="keyword">else</span> {
+        console.log(<span class="string">'Go to School'</span>);
+    }</code></pre>
 </section>
   </div>
   <div class="slide hidden" id="slide-5">
-    <section class="slide-content"><h1 id="-del-i-m-not-a-programmer-del-"><del>&quot;I&#39;m not a programmer&quot;</del></h1>
+    <section class="slide-content"><h2 id="scope">Scope</h2>
+<p>Scope is a term that refers to &#39;visibility&#39; of variables. A variable is in scope if you can use it.</p>
 </section>
   </div>
-  <div class="slide hidden  " id="slide-6">
-    <section class="slide-content"><h1 id="-del-why-do-we-need-to-know-this-del-"><del>&quot;Why Do We Need to Know This?&quot;</del></h1>
+  <div class="slide hidden" id="slide-6">
+    <section class="slide-content"><h2 id="functions-and-scope">Functions and Scope</h2>
+<p>Variables defined inside a function are only visible inside of the function.</p>
+<pre><code class="lang-javascript">
+    <span class="keyword">var</span> a = <span class="number">1</span>;
+    <span class="keyword">var</span> b = <span class="number">2</span>;
+    <span class="keyword">var</span> c = <span class="number">3</span>;
+
+    <span class="keyword">var</span> fn = <span class="keyword">function</span>(a) {
+
+        <span class="keyword">var</span> b = <span class="string">"Foo"</span>;
+        <span class="keyword">var</span> d = <span class="string">"Bar"</span>;
+
+        console.log(a, b, c);
+    }
+
+    fn(<span class="number">6</span>);
+
+    console.log(a,b,c,d);</code></pre>
 </section>
   </div>
   <div class="slide hidden" id="slide-7">
-    <section class="slide-content"><h1 id="you-have-to-type">You Have To Type</h1>
+    <section class="slide-content"><h2 id="functions-and-scope">Functions and Scope</h2>
+<p>When you use a variable, Javascript will find the &quot;nearest&quot; one and use it. If it can&#39;t find it, it will walk up the ladder of scope.</p>
+<pre><code class="lang-javascript">
+    <span class="keyword">var</span> a = <span class="number">1</span>;
+    <span class="keyword">var</span> b = <span class="number">2</span>;
+    <span class="keyword">var</span> c = <span class="number">3</span>;
+
+    <span class="keyword">var</span> fn = <span class="keyword">function</span>(a) {
+
+        <span class="keyword">var</span> fn2 = <span class="keyword">function</span>() {
+            <span class="keyword">var</span> a = <span class="string">"Hello"</span>;
+            console.log(a);
+        }
+
+        console.log(a);
+        fn2();
+
+    }
+
+    fn(<span class="number">10</span>);</code></pre>
 </section>
   </div>
   <div class="slide hidden" id="slide-8">
-    <section class="slide-content"><h1 id="think-small">Think Small</h1>
+    <section class="slide-content"><h2 id="debugging">debugging</h2>
+<p>Allows you to see exactly what&#39;s happening in a program.</p>
+<p>Set in the Sources panel or from your code.</p>
+<pre><code class="lang-javascript">
+    debugger;</code></pre>
+<p><a href="http://miniatureape.github.io/js-fall-2014/slides/demos/basics/index.html">demo</a></p>
 </section>
   </div>
   <div class="slide hidden" id="slide-9">
-    <section class="slide-content"><h1 id="-demo-http-miniatureape-github-io-facecontroller-"><a href="http://miniatureape.github.io/facecontroller/">demo</a></h1>
+    <section class="slide-content"><h2 id="this">this</h2>
+<p>We saw that in an event listener, the keyword &#39;this&#39; refered to the thing the event handler was attached to. In general, this refers to the object the function is defined in. If it is not defined in a function, it refers to the &#39;global&#39; scope, window.</p>
+<pre><code class="lang-javascript">
+    console.log(<span class="keyword">this</span>);
+
+    <span class="keyword">var</span> fn = <span class="keyword">function</span>() {
+        console.log(<span class="keyword">this</span>);
+    }
+
+    <span class="keyword">var</span> person = {
+        name: <span class="string">"Justin"</span>,
+        sayName: <span class="keyword">function</span>() {
+            console.log(<span class="keyword">this</span>.name);
+        }
+    }
+
+    person.sayName();</code></pre>
 </section>
   </div>
   <div class="slide hidden" id="slide-10">
-    <section class="slide-content"></section>
-  </div>
-  <div class="slide hidden" id="slide-11">
     <section class="slide-content"><div class="author">
   <h1 class="name">Justin Donato</h1>
     <h3 class="twitter">

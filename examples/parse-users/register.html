@@ -1,0 +1,47 @@
+<script src="jquery-2.1.1.min.js"></script>
+<script src="parse-1.3.0.min.js"></script>
+
+<form id="register">
+    <input type="text" name="username" />
+    <input type="text" name="email" />
+    <input type="password" name="password" />
+    <input type="submit" value="Sign Up" />
+</form>
+
+<script>
+
+    Parse.initialize("anBpWcFi4tt8WN5nIFJ2T2eaRLp9rCGhxOWZohtQ", "0bKnqYCRZhCr0OorUipeh5KoFbvvWm5zpYzOkVW8");
+
+    var registerForm = $('#register');
+
+    registerForm.on('submit', function(e) {
+
+        e.preventDefault();
+
+        var username = registerForm.find('[name="username"]').val();
+        var password = registerForm.find('[name="password"]').val();
+        var email = registerForm.find('[name="email"]').val();
+
+        debugger;
+
+        var user = new Parse.User();
+
+        user.set("username", username);
+        user.set("password", password);
+        user.set("email", email);
+
+        user.signUp(null, {
+
+            success: function() {
+                console.log('Hooray. Signed up a user', arguments);
+            },
+
+            error: function() {
+                console.log('Boo! Could not sign up a user', arguments);
+            }
+        })
+
+
+    });
+    
+</script>

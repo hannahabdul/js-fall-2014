@@ -1,0 +1,143 @@
+<style>
+
+    body {
+        font-family: Helvetica;
+    }
+
+    #container {
+        max-width: 600px;
+        margin: 0 auto;
+        background: #eee;
+    }
+
+    .header {
+        padding: 20px;
+        background: #edd;
+    }
+
+    ul {
+        padding: 0;
+        margin: 0;
+    }
+
+    li {
+        list-style-type: none;
+        padding: 10px;
+        border-bottom: 1px solid #ddd;
+    }
+
+    li:hover .delete {
+        display: block;
+    }
+
+    .delete {
+        float: right;
+        display: none;
+    }
+
+    .deleted {
+        text-decoration: line-through;
+    }
+
+
+</style>
+
+<script src="jquery.js"></script>
+
+<div id="container">
+    <div class="header">
+        <input type="text" id="new-item" placeholder="enter todo" />
+    </div>
+    <ul id="todolist"></ul>
+</div>
+
+<script>
+
+    (function() {
+
+       var getTodos = function() {
+
+           var todosJSON = localStorage.getItem('todos');
+
+           if (todosJSON) {
+               return JSON.parse(todosJSON);
+           }
+
+           return [];
+       }
+
+       var addNewTodo = function(todoText) {
+
+           var newTodo = {
+               text: todoText,
+               finished: false
+           };
+
+           todos.push(newTodo);
+
+           store();
+           refresh();
+
+       }
+
+       var store = function() {
+           localStorage.setItem('todos', JSON.stringify(todos));
+       }
+
+       var refresh = function() {
+           $('#todolist').empty();
+
+           for (var i = 0; i < todos.length; i++) {
+               addDomItem(todos[i]);
+           }
+       }
+
+       var addDomItem = function(todo) {
+
+           var newLi = $("<li></li>");
+           newLi.text(todo.text);
+
+           if (todo.finished) {
+               newLi.addClass('deleted');
+           }
+
+           newLi.append($("<span class='delete'>x</span>"));
+
+           $('#todolist').append(newLi);
+
+       }
+
+       $('#new-item').on('keypress', function(e) {
+
+
+           // http://www.theasciicode.com.ar/
+
+           if (e.which === 13) {
+
+               var todoText = $('#new-item').val();
+               addNewTodo(todoText);
+           }
+
+       });
+
+       $('#todolist').on('click', 'li', function() {
+
+           var clickedElem = $(this);
+           var index = $('#todolist li').index(clickedElem);
+
+           var todo = todos[index];
+           todo.finished = true;
+
+           store();
+           refresh();
+
+       });
+
+
+       var todos = getTodos();
+       refresh();
+
+
+    })()
+
+</script>

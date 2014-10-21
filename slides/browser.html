@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-  <title>Javascript</title>
+  <title>Javascript Basics</title>
   <style type="text/css">
     body {
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -411,51 +411,191 @@ h1 {
   </div>
 
   <div class="slide" id="slide-1">
-    <section class="slide-content"><h1 id="why-">Why?</h1>
+    <section class="slide-content"><h1 id="javascript-in-the-browser">Javascript in the Browser</h1>
 </section>
   </div>
-  <div class="slide hidden" id="slide-2">
-    <section class="slide-content"><h1 id="syllabus">Syllabus</h1>
-<ul>
-<li>Weekly Exercises</li>
-<li>Live Coding</li>
-<li>Two Projects</li>
+  <div class="slide hidden  " id="slide-2">
+    <section class="slide-content"><ul>
+<li>HTML: Structure (What it is)</li>
+<li>CSS: How it looks (and moves)</li>
+<li>Javascript: What it does.</li>
 </ul>
 </section>
   </div>
-  <div class="slide hidden" id="slide-3">
-    <section class="slide-content"><h1 id="submitting-work-github-">Submitting Work: Github.</h1>
-<p>The class runs on github.</p>
+  <div class="slide hidden  " id="slide-3">
+    <section class="slide-content"><h1 id="document-object-model-dom-">Document Object Model (DOM)</h1>
+<ul>
+<li>The computer&#39;s internal representation of your markup.</li>
+<li>Javascript can read and change it.</li>
+<li>A &quot;Tree-like&quot; structure</li>
+<li>Each element is a &quot;Dom Node&quot;</li>
+<li>Different than &quot;View Source&quot;</li>
+</ul>
 </section>
   </div>
-  <div class="slide hidden" id="slide-4">
-    <section class="slide-content"><h1 id="schedule-and-subject-matter-">Schedule and subject matter.</h1>
+  <div class="slide hidden  " id="slide-4">
+    <section class="slide-content"><h1 id="window">window</h1>
+<ul>
+<li>Javascript&#39;s environment in the browser</li>
+<li>Provides access to Javascript Built-ins...</li>
+<li>There&#39;s tons of stuff on window. Go explore.</li>
+</ul>
+<pre><code class="lang-javascript"><span class="comment">// Try this: go to: https://www.google.com/?q=cats</span>
+<span class="keyword">var</span> loc = window.location.toString();
+window.location = loc.replace(<span class="string">'google'</span>, <span class="string">'bing'</span>)</code></pre>
 </section>
   </div>
-  <div class="slide hidden" id="slide-5">
-    <section class="slide-content"><h1 id="-del-i-m-not-a-programmer-del-"><del>&quot;I&#39;m not a programmer&quot;</del></h1>
+  <div class="slide hidden  " id="slide-5">
+    <section class="slide-content"><h1 id="window">window</h1>
+<ul>
+<li>Also provides access to the DOM through (window.document)</li>
+</ul>
+<pre><code class="lang-javascript">window.document.body.style.backgroundColor = <span class="string">'red'</span>;</code></pre>
 </section>
   </div>
   <div class="slide hidden  " id="slide-6">
-    <section class="slide-content"><h1 id="-del-why-do-we-need-to-know-this-del-"><del>&quot;Why Do We Need to Know This?&quot;</del></h1>
+    <section class="slide-content"><h1 id="you-can-dynamically-change-nearly-any-part-of-the-dom-">You can dynamically change nearly any part of the DOM.</h1>
+<p>To do so, you need a reference to a DOM Node.</p>
+<pre><code class="lang-javascript"><span class="keyword">var</span> myBox = document.getElementById(<span class="string">'box'</span>);
+<span class="keyword">var</span> myBoxes = document.getElementsByTagName(<span class="string">'div'</span>);
+<span class="keyword">var</span> myOrangeBoxes = document.querySelectorAll(<span class="string">'.orange'</span>);</code></pre>
 </section>
   </div>
-  <div class="slide hidden" id="slide-7">
-    <section class="slide-content"><h1 id="you-have-to-type">You Have To Type</h1>
+  <div class="slide hidden  " id="slide-7">
+    <section class="slide-content"><p>Once you have a dom node, you can...</p>
+<pre><code class="lang-javascript">
+<span class="comment">// Add a class using classList</span>
+
+<span class="keyword">var</span> myBox = document.getElementById(<span class="string">'box'</span>);
+
+myBox.classList.add(<span class="string">'orange'</span>);
+myBox.classList.remove(<span class="string">'bold'</span>);</code></pre>
 </section>
   </div>
-  <div class="slide hidden" id="slide-8">
-    <section class="slide-content"><h1 id="think-small">Think Small</h1>
+  <div class="slide hidden  " id="slide-8">
+    <section class="slide-content"><p>Change styles directly</p>
+<pre><code class="lang-javascript">
+<span class="keyword">var</span> myBoxes = document.getElementsByTagName(<span class="string">'div'</span>);
+myBoxes[<span class="number">0</span>].style.backgroundColor = <span class="string">'red'</span>;
+
+<span class="comment">// Notice I use array access brackets to get the first element.</span>
+<span class="comment">// You can't do myBoxes.style because my box is not a dom node, its a list of them.</span></code></pre>
 </section>
   </div>
-  <div class="slide hidden" id="slide-9">
-    <section class="slide-content"><h1 id="-demo-http-miniatureape-github-io-facecontroller-"><a href="http://miniatureape.github.io/facecontroller/">demo</a></h1>
+  <div class="slide hidden  " id="slide-9">
+    <section class="slide-content"><p>You can remove an element.</p>
+<pre><code class="lang-javascript"><span class="keyword">var</span> myBoxes = document.getElementsByTagName(<span class="string">'div'</span>);
+<span class="keyword">var</span> firstBox = myBoxes[<span class="number">0</span>];
+firstBox.remove();</code></pre>
 </section>
   </div>
-  <div class="slide hidden" id="slide-10">
-    <section class="slide-content"></section>
+  <div class="slide hidden  " id="slide-10">
+    <section class="slide-content"><p>You can create a new element</p>
+<pre><code class="lang-javascript">
+<span class="keyword">var</span> newDiv = document.createElement(<span class="string">'div'</span>);
+<span class="keyword">var</span> text = document.createTextNode(<span class="string">'Dynamically added text'</span>);
+newDiv.appendChild(text);
+document.body.appendChild(newDiv);</code></pre>
+</section>
   </div>
-  <div class="slide hidden" id="slide-11">
+  <div class="slide hidden  " id="slide-11">
+    <section class="slide-content"><p>You can create a new element</p>
+<pre><code class="lang-javascript">
+<span class="keyword">var</span> newDiv = document.createElement(<span class="string">'div'</span>);
+<span class="keyword">var</span> text = document.createTextNode(<span class="string">'Dynamically added text'</span>);
+newDiv.appendChild(text);
+document.body.appendChild(newDiv);</code></pre>
+</section>
+  </div>
+  <div class="slide hidden  " id="slide-12">
+    <section class="slide-content"><p>Dom nodes can be talked about as being in parent/child relationships.</p>
+<p>A tag is a parent of a tag if it contains that tag. That tag is its child.</p>
+<p>You can extend the metaphor: tags that have the same parent are siblings.</p>
+<pre><code class="lang-javascript">
+<span class="keyword">var</span> list = document.getElementById(<span class="string">'list'</span>);
+<span class="keyword">var</span> items = list.childNodes;
+<span class="keyword">var</span> secondItem = items[<span class="number">1</span>];</code></pre>
+</section>
+  </div>
+  <div class="slide hidden  " id="slide-13">
+    <section class="slide-content"><p>I&#39;ve been using document to find children nodes. It&#39;s the ancestor of every node, so you can find any of them.</p>
+<p>But, you can search under a specific node by scoping your query.</p>
+<pre><code class="lang-javascript">
+<span class="keyword">var</span> list = document.getElementById(<span class="string">'list'</span>);
+list.querySelectorAll(<span class="string">'.orange'</span>)</code></pre>
+</section>
+  </div>
+  <div class="slide hidden  " id="slide-14">
+    <section class="slide-content"><h1 id="browser-events">Browser Events</h1>
+<p>This stuff isn&#39;t really fun until you start working with user input. </p>
+<p>With Browser events you can respond when a user: </p>
+<ul>
+<li>clicks something</li>
+<li>moves her mouse</li>
+<li>scrolls the page</li>
+<li>resizes the window</li>
+<li>types into the keyboard</li>
+<li>submits a form</li>
+<li>moves to another page</li>
+<li>changes a select box</li>
+<li>turns their device from portrait to landscape</li>
+<li>changes their physical location</li>
+<li>...</li>
+</ul>
+</section>
+  </div>
+  <div class="slide hidden  " id="slide-15">
+    <section class="slide-content"><h1 id="browser-events">Browser Events</h1>
+<p>The setup is always basically the same. Let&#39;s say I want to add an item to a list any time you click on it.</p>
+<ol>
+<li>Get a reference to the DOM node you want to listen to events on.</li>
+</ol>
+<pre><code class="lang-javascript"><span class="keyword">var</span> list = document.getElementById(<span class="string">'list'</span>);</code></pre>
+</section>
+  </div>
+  <div class="slide hidden  " id="slide-16">
+    <section class="slide-content"><p>The setup is always basically the same. </p>
+<ol>
+<li>Call the &#39;addEventListener&#39; function on it. The first argument is the name of the event you want to listen to. The second is the function you want to run when you the event occurs.</li>
+</ol>
+<pre><code class="lang-javascript">list.addEventListener(<span class="string">'click'</span>, clickHandler);</code></pre>
+<p>In this case, clickHandler is something we need to define.</p>
+</section>
+  </div>
+  <div class="slide hidden  " id="slide-17">
+    <section class="slide-content"><pre><code class="lang-javascript">
+<span class="keyword">var</span> clickHandler = <span class="keyword">function</span>() {
+    <span class="comment">// add new item</span>
+};
+
+list.addEventListener(<span class="string">'click'</span>, clickHandler);</code></pre>
+</section>
+  </div>
+  <div class="slide hidden  " id="slide-18">
+    <section class="slide-content"><h1 id="a-few-more-things-about-events">A Few More Things About Events</h1>
+<p>Inside of your handler function, there is a variable you can use called <code>this</code></p>
+<p>It refers to the element you attached the handler to.</p>
+<p>```javascript</p>
+<p>var clickHandler = function() {
+    this.appendChild(...pass in a new node...);
+};</p>
+<p>list.addEventListener(&#39;click&#39;, clickHandler);</p>
+</section>
+  </div>
+  <div class="slide hidden  " id="slide-19">
+    <section class="slide-content"><p>Almost every event handler gets passed an &#39;Event&#39; argument.</p>
+<pre><code class="lang-javascript">
+<span class="keyword">var</span> clickHandler = <span class="keyword">function</span>(e) {
+    console.log(e.currentTarget);
+    console.log(e.timeStamp);
+    console.log(e.pageX, e.pageY);
+    console.log(e); <span class="comment">// go explore</span>
+};
+
+list.addEventListener(<span class="string">'click'</span>, clickHandler);</code></pre>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-20">
     <section class="slide-content"><div class="author">
   <h1 class="name">Justin Donato</h1>
     <h3 class="twitter">

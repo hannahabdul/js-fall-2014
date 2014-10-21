@@ -1,0 +1,46 @@
+
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="utf-8">
+        <title>Instapaint</title>
+        <link href='http://fonts.googleapis.com/css?family=Yellowtail' rel='stylesheet' type='text/css'>
+        <link href="styles.css" rel="stylesheet" />
+    </head>
+
+    <body>
+        <div id="app">
+            <header>
+                <h1>Instapaint</h1>
+                <button class="btn toggle-upload">&#8613;</button>
+            </header>
+            <form id="upload">
+                <div><button id="styled-photo" class="btn wide">Take Photo</button></div>
+                <div><input id="photo" type="file" accept="image/*" capture="camera" /></div>
+                <div class="caption-section">
+                    <div><input id="caption" type="text" placeholder="caption" /></div>
+                    <div><button type="submit" class="btn wide upload-btn">Upload</button></div>
+                </div>
+            </form>
+            <ul id="list" />
+        </div>
+    </body>
+
+    <script src="jquery-2.1.1.min.js"></script>
+    <script src="parse-1.3.0.min.js"></script>
+    <script src="app.js"></script>
+
+    <script>
+
+        var currentUser = Parse.User.current();
+
+        if (currentUser) {
+            startApp();
+        } else {
+            navigateTo('login.html');
+        }
+
+    </script>
+
+</html>

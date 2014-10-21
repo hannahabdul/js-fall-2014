@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-  <title>Javascript</title>
+  <title>Persistence</title>
   <style type="text/css">
     body {
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -411,51 +411,137 @@ h1 {
   </div>
 
   <div class="slide" id="slide-1">
-    <section class="slide-content"><h1 id="why-">Why?</h1>
+    <section class="slide-content"><h1 id="persistence-json">Persistence &amp; JSON</h1>
 </section>
   </div>
-  <div class="slide hidden" id="slide-2">
-    <section class="slide-content"><h1 id="syllabus">Syllabus</h1>
-<ul>
-<li>Weekly Exercises</li>
-<li>Live Coding</li>
-<li>Two Projects</li>
-</ul>
+  <div class="slide hidden  " id="slide-2">
+    <section class="slide-content"><h2 id="localstorage">Localstorage</h2>
+<p>Easiest way to store data in JS.</p>
 </section>
   </div>
-  <div class="slide hidden" id="slide-3">
-    <section class="slide-content"><h1 id="submitting-work-github-">Submitting Work: Github.</h1>
-<p>The class runs on github.</p>
+  <div class="slide hidden  " id="slide-3">
+    <section class="slide-content"><pre><code class="lang-javascript">
+localStorage.setItem(<span class="string">'age'</span>, <span class="number">72</span>);
+<span class="keyword">var</span> age = localStorage.getItem(<span class="string">'age'</span>);</code></pre>
 </section>
   </div>
-  <div class="slide hidden" id="slide-4">
-    <section class="slide-content"><h1 id="schedule-and-subject-matter-">Schedule and subject matter.</h1>
+  <div class="slide hidden  " id="slide-4">
+    <section class="slide-content"><p>Only stores strings!</p>
+<pre><code class="lang-javascript">localStorage.setItem(<span class="string">'weight'</span>, <span class="number">154.4</span>);
+<span class="keyword">var</span> age = localStorage.getItem(<span class="string">'weight'</span>);
+
+age.toExponential() <span class="comment">// ERROR! age is not a number</span></code></pre>
 </section>
   </div>
-  <div class="slide hidden" id="slide-5">
-    <section class="slide-content"><h1 id="-del-i-m-not-a-programmer-del-"><del>&quot;I&#39;m not a programmer&quot;</del></h1>
+  <div class="slide hidden  " id="slide-5">
+    <section class="slide-content"><p>Convert when you extract.</p>
+<pre><code class="lang-javascript">localStorage.setItem(<span class="string">'weight'</span>, <span class="number">154.4</span>);
+<span class="keyword">var</span> age = parseFloat(localStorage.getItem(<span class="string">'weight'</span>), <span class="number">10</span>);
+
+age.toExponential() <span class="comment">// ERROR! age is not a number</span></code></pre>
 </section>
   </div>
   <div class="slide hidden  " id="slide-6">
-    <section class="slide-content"><h1 id="-del-why-do-we-need-to-know-this-del-"><del>&quot;Why Do We Need to Know This?&quot;</del></h1>
+    <section class="slide-content"><h2 id="json-javascript-object-notation">JSON: Javascript Object Notation</h2>
+<ul>
+<li>A textual representation of a javascript object</li>
+<li>Allows you to store and transmit the objects in your code.</li>
+</ul>
 </section>
   </div>
-  <div class="slide hidden" id="slide-7">
-    <section class="slide-content"><h1 id="you-have-to-type">You Have To Type</h1>
+  <div class="slide hidden  " id="slide-7">
+    <section class="slide-content"><pre><code class="lang-javascript">
+<span class="keyword">var</span> hero = {
+    name: <span class="string">'Don Quixote'</span>,
+    hasHorse: <span class="literal">true</span>,
+    friends: [<span class="string">'Sancho'</span>, <span class="string">'Dulcinea'</span>]
+}
+
+<span class="keyword">var</span> heroJSON = JSON.stringify(hero)
+
+<span class="keyword">var</span> hero = JSON.parse(heroJSON);</code></pre>
 </section>
   </div>
-  <div class="slide hidden" id="slide-8">
-    <section class="slide-content"><h1 id="think-small">Think Small</h1>
+  <div class="slide hidden  " id="slide-8">
+    <section class="slide-content"><pre><code class="lang-javascript">
+<span class="keyword">var</span> hero = {
+    name: <span class="string">'Don Quixote'</span>,
+    hasHorse: <span class="literal">true</span>,
+    friends: [<span class="string">'Sancho'</span>, <span class="string">'Dulcinea'</span>]
+}
+
+<span class="keyword">var</span> heroJSON = JSON.stringify(hero)
+
+localStorage.setItem(<span class="string">'hero'</span>, hero);</code></pre>
 </section>
   </div>
-  <div class="slide hidden" id="slide-9">
-    <section class="slide-content"><h1 id="-demo-http-miniatureape-github-io-facecontroller-"><a href="http://miniatureape.github.io/facecontroller/">demo</a></h1>
+  <div class="slide hidden  " id="slide-9">
+    <section class="slide-content"><pre><code class="lang-javascript">
+<span class="keyword">var</span> heroJSON = localStorage.getItem(<span class="string">'hero'</span>);
+<span class="keyword">var</span> hero = JSON.parse(heroJSON);</code></pre>
 </section>
   </div>
-  <div class="slide hidden" id="slide-10">
-    <section class="slide-content"></section>
+  <div class="slide hidden  " id="slide-10">
+    <section class="slide-content"><p>Somethings can&#39;t be serialized</p>
+<pre><code class="lang-javascript">
+<span class="keyword">var</span> hero = {
+    name: <span class="string">'Don Quixote'</span>,
+    sayName: <span class="keyword">function</span>() {
+        console.log(<span class="keyword">this</span>.name);
+    }
+}
+
+localStorage.setItem(<span class="string">'hero'</span>, JSON.stringify(hero));
+<span class="keyword">var</span> heroJSON = localStorage.getItem(<span class="string">'hero'</span>);
+
+<span class="keyword">var</span> hero = JSON.parse(heroJSON);
+console.log(hero); <span class="comment">// No sayName function?</span></code></pre>
+</section>
   </div>
-  <div class="slide hidden" id="slide-11">
+  <div class="slide hidden  " id="slide-11">
+    <section class="slide-content"><p>Quick Solution!</p>
+<pre><code class="lang-javascript">
+<span class="keyword">var</span> makeAnimal = <span class="keyword">function</span>(animalProperties) {
+
+    animalProperties.speak = <span class="keyword">function</span>() {
+        console.log(<span class="keyword">this</span>.sound);
+    }
+
+    animalProperties.walk = <span class="keyword">function</span>() {
+        console.log(<span class="string">'walking on'</span>, <span class="keyword">this</span>.legs, <span class="string">'legs'</span>);
+    }
+
+    <span class="keyword">return</span> animalProperties;
+
+}
+
+<span class="keyword">var</span> cat = {
+    type: <span class="string">'cat'</span>,
+    sound: <span class="string">'meow'</span>,
+    legs: <span class="number">4</span>,
+}
+
+<span class="keyword">var</span> bird = {
+    type: <span class="string">'bird'</span>,
+    sound: <span class="string">'chirp'</span>,
+    legs: <span class="number">2</span>
+
+}
+
+localStorage.setItem(<span class="string">'cat'</span>, JSON.stringify(cat));
+localStorage.setItem(<span class="string">'bird'</span>, JSON.stringify(bird));
+
+<span class="keyword">var</span> catJSON = localStorage.getItem(<span class="string">'cat'</span>);
+<span class="keyword">var</span> birdJSON = localStorage.getItem(<span class="string">'bird'</span>);
+
+<span class="keyword">var</span> cat = makeAnimal(JSON.parse(catJSON));
+<span class="keyword">var</span> bird = makeAnimal(JSON.parse(birdJSON));
+
+cat.speak();
+bird.walk();</code></pre>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-12">
     <section class="slide-content"><div class="author">
   <h1 class="name">Justin Donato</h1>
     <h3 class="twitter">

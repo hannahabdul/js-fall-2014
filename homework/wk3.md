@@ -30,4 +30,4 @@ var leftyClickHandler = function(e) {
 
 ```
 
-- Bonus: Change the class `left` so that another field animates when you click.
+- Bonus: Change the class `lefty` so that a field animates when you click.
