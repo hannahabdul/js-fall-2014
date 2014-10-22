@@ -1,12 +1,127 @@
 <html>
 <head>
-  <meta charset="utf-8">
-  <title>Type Here</title>
+    <meta charset="utf-8">
+    <script src="https://code.jquery.com/jquery-2.1.1.js"></script>
+    <title>Write It. (Homework Week 5)</title>
+	<style type="text/css">
+		
+		body { 
+			background-color: whitesmoke;
+			font-family: Helvetica, sans-serif;
+			font-size: 2em;
+			padding: 0;
+			margin: 0; 
+		}
+		
+		body, html {
+		  	height: 100%;
+		  	width: 100%;
+		  	overflow: hidden;
+		}
+		
+		textarea#content {
+		  background-color: whitesmoke;
+		  float: left;
+		  width: 95%;
+		  height: 95%;
+		  font-size: 1em;
+		  resize: none;
+		  padding: 40px;
+		  line-height: 1.3em;
+		  border: none;
+		  outline: none;
+		  margin: 0;
+		}
+
+		label {
+			margin-left: 40px;
+		}
+
+	</style>
 </head>
-<body>
+<body onload="applySettings();">
+	<section>
+		<form onsubmit="javascript:setSettings()">
+			<label style="font-size: 12pt;" "margin-left: 40px;">Select background color: </label>
+		 <input id="favcolor" type="color" value="#ffffff" />
 
-    <!-- GO NUTS! -->
+		 <label style="font-size: 12pt;" "margin-left: 40px;">Select font size: </label>
+		 <input id="fontwt" type="number" max="48" min="1" value="13" />
 
+		 <input type="submit" value="Save" />
+		 <input onclick="clearSettings()" type="reset" value="Clear" /></form>
+	</section>
+	<textarea type="text" id="content" placeholder="" autofocus="true" style="width: 1339px;","height: 1339px;" name="post" id="post" onclick="if(this.value == 'Write Something here...') this.value='';" onblur="if(this.value == '') this.value='Write Something here...';" class="cleardefault" >Write Something here...</textarea>
+<script>
+	function resizeBox() {
+    	var windowWidth = $(window).width() - 1;
+    	$('#content').css('width', windowWidth);
+
+    	var windowHeight = $(window).height() -1;
+    	$('#content').css('height', windowHeight);
+	}
+
+	$(function() {
+
+  		resizeBox();
+  
+  	$(window).resize(resizeBox);
+
+  	$('#content').val(localStorage.content);
+
+  	$('#content').on( "keyup", function() {
+    	var content = $('#content').val();
+    	localStorage.content = content;
+  	});
+
+	function setSettings() {
+		if ('localStorage' in window && window['localStorage'] !== null) {
+			try {
+				var favcolor = document.getElementById('favcolor').value;
+				var fontwt = document.getElementById('fontwt').value;
+				localStorage.setItem('bgcolor', favcolor);
+				localStorage.fontweight = fontwt;
+			} catch (e) {
+				if (e == QUOTA_EXCEEDED_ERR) {
+					alert('Quota exceeded!');
+				}
+			}
+			} else {
+				alert('Cannot store user preferences as your browser do not support local storage');
+			}
+		}
+
+	function applySetting () {
+	    if (localStorage.length != 0) {
+	    document.body.style.backgroundColor = localStorage.getItem('bgcolor');
+	    document.body.style.fontSize = localStorage.fontweight + 'px';
+	    document.getElementById('favcolor').value = localStorage.bgcolor;
+	    document.getElementById('fontwt').value = localStorage.fontweight;
+	    } else {
+	    document.body.style.backgroundColor = '#FFFFFF';
+	    document.body.style.fontSize = '13px'
+	    document.getElementById('favcolor').value = '#FFFFFF';
+	    document.getElementById('fontwt').value = '13';
+	    }
+	}
+
+	function clearSettings() {
+        localStorage.removeItem("bgcolor");
+        localStorage.removeItem("fontweight");
+        document.body.style.backgroundColor = '#FFFFFF';
+        document.body.style.fontSize = '13px'
+        document.getElementById('favcolor').value = '#FFFFFF';
+        document.getElementById('fontwt').value = '13';
+ 
+	}
+
+	window.addEventListener('storage', storageEventHandler, false);
+	function storageEventHandler(event) {
+        applySetting ();
+	}
+
+
+	});
+</script>
 </body>
 </html>
-
