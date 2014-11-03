@@ -1,0 +1,132 @@
+			@import url(http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,700,300,600,400);
+
+			@import url(http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz:200,300,400);
+
+
+			/*html {
+			  background: whitesmoke / seashell;
+			  color: #000000 /*#fff;
+			  font-family: 'Yanone Kaffeesatz', sans-serif;
+			}*/
+
+			/*color code for end color after countdown stop:
+			http://www.colorcodehex.com/cde699/;*/
+
+			body { 
+				background:whitesmoke; 
+				font-family:"Open Sans"; 
+				font-weight:400; 
+				padding-top:20px; 
+				text-align:center; 
+				}
+
+
+			header {
+				font-family: 'Lobster Two', cursive;
+				font-weight: 700;
+				font-style: italic;
+				color: #000000;
+				font-size: 4em;
+				margin-left: 30px;
+				margin-bottom: 90px;
+				text-align: left;
+				}
+
+			header a {
+				text-decoration: none;
+				color: #000000;
+			}
+
+			#message    { 
+				color:#000000; 
+				font-size:2em;
+				font-style: italic; 
+				margin-bottom:20px; 
+				}
+
+			#timer     { 
+				color:#000000; 
+				font-size: 8em; 
+				margin-bottom:40px; 
+				}
+
+			#timer-beep {
+				position: absolute;
+				top: -100000em;
+				}
+
+			#buttons button { 
+				background:limegreen; 
+				border:none; 
+				color: whitesmoke; 
+				font-size: 1em;
+				cursor:pointer; 
+				padding:15px 30px; 
+				margin:0 auto; 
+				border-radius:50px;
+				margin-bottom: 10px;
+
+				}
+			#stop, #reset { 
+				display:none;
+				}
+
+			footer {
+				font-size: 0.8rem;
+				position: fixed;
+				background: transparent;
+				bottom: 15px;
+				width: 100%;
+				}
+
+			footer a {
+				text-decoration: underline;
+				color: #000000;
+				margin-left: -60px;
+				padding: none;
+				background-color: transparent;
+				}
+
+			footer ul li {
+				float: left;
+				display: inline-block;
+				margin-left: 50px;
+				}
+
+			h1 {
+				font-weight: 600;
+				color: #000000;
+				font-size: 2em;
+				margin-left: 30px;
+				margin-bottom: 20px;
+				text-align: center;	
+			}
+
+			section p{
+				width: 500px;
+				margin: auto;
+			}
+
+			p {
+				font-weight: 400;
+				color: #000000;
+				font-size: 1em;
+				margin-left: 30px;
+				margin-bottom: 90px;
+				text-align: justify;
+				line-height: 1.5;
+				text-decoration: none;
+
+			}
+ 
+			#times #time a {
+			text-align: center; 
+			display: inline-block;
+				 
+				text-decoration: underline;
+				width: 100px;
+				height: 20px;
+				color: #000000;
+				margin-top: 10px;
+				
+			}
